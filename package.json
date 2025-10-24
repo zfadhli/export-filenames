@@ -19,6 +19,10 @@
     "folder"
   ],
   "author": "Zulfadhli Zakari",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zfadhli/export-filenames"
+  },
   "license": "MIT",
   "dependencies": {
     "cli-progress": "^3.12.0"
@@ -29,9 +33,5 @@
   },
   "peerDependencies": {
     "typescript": "^5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zfadhli/export-filenames"
   }
 }
