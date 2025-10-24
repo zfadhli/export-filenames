@@ -126,9 +126,23 @@ function scan(path: string): FileStructure {
 }
 
 async function main() {
-	const currentPath = process.cwd();
-	const folderName = basename(currentPath);
-	const total = countFiles(currentPath);
+	const targetPath = process.argv[2] || process.cwd();
+	const folderName = basename(targetPath);
+
+	// Verify path exists
+	try {
+		statSync(targetPath);
+	} catch {
+		console.error(`Error: Cannot access directory: ${targetPath}`);
+		process.exit(1);
+	}
+
+	const total = countFiles(targetPath);
+
+	if (total === 0) {
+		console.error("Error: No files found in directory");
+		process.exit(1);
+	}
 
 	progressBar = new cliProgress.SingleBar({
 		format: "Progress |{bar}| {percentage}% ({value}/{total})",
@@ -138,7 +152,7 @@ async function main() {
 	});
 
 	progressBar.start(total, 0);
-	const data = scan(currentPath);
+	const data = scan(targetPath);
 	progressBar.stop();
 
 	const file = `${folderName}_${getTimestamp()}.json`;
