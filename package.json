@@ -1,6 +1,6 @@
 {
   "name": "export-filenames",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Export folder structure and filenames to JSON",
   "main": "dist/export-filenames",
   "bin": {
